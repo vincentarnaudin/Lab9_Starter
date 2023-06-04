@@ -69,22 +69,28 @@
     </form>
 
     <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
-      <button>Trigger a Global Error</button>
+      <button onclick="consoleLogDemo()">Console Log</button>
+      <button onclick="consoleErrorDemo()">Console Error</button>
+      <button onclick="consoleCountDemo()">Console Count</button>
+      <button onclick="consoleWarnDemo()">Console Warn</button>
+      <button onclick="consoleAssertDemo()">Console Assert</button>
+      <button onclick="consoleClearDemo()">Console Clear</button>
+      <button onclick="consoleDirDemo()">Console Dir</button>
+      <button onclick="consoleDirXmlDemo()">Console dirxml</button>
+      <button onclick="consoleGroupStartDemo()">Console Group Start</button>
+      <button onclick="consoleGroupEndDemo()">Console Group End</button>
+      <button onclick="consoleTableDemo()">Console Table</button>
+      <button onclick="startTimer()">Start Timer</button>
+      <button onclick="endTimer()">End Timer</button>
+      <button onclick="consoleTraceDemo()">Console Trace</button>
+      <button onclick="triggerGlobalError()">Trigger a Global Error</button>
     </section>
+    <hr>
+    <button onclick="handleError()">Try catch</button>
+    <hr>
+    <button onclick="throwCustomError()">Throw Custom Error</button>
+    <hr>
+    <button onclick="throwError()">Throw Error</button>
   </main>
 
   <script>
@@ -102,6 +108,132 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    // Console Log Demo
+    function consoleLogDemo() {
+      console.log("This is a console log message.");
+    }
+
+    // Console Error Demo
+    function consoleErrorDemo() {
+      console.error("This is a console error message.");
+    }
+
+    // Console Count Demo
+    function consoleCountDemo() {
+      console.count("Count");
+      console.count("Count");
+      console.count("Count");
+    }
+
+    // Console Warn Demo
+    function consoleWarnDemo() {
+      console.warn("This is a console warning message.");
+    }
+
+    function consoleAssertDemo() {
+      console.assert(2 + 2 === 5, "Assertion failed: 2 + 2 is not equal to 5");
+    }
+
+    // Console Clear Demo
+    function consoleClearDemo() {
+      console.clear();
+    }
+
+    // Console Dir Demo
+    function consoleDirDemo() {
+      const obj = { name: "John", age: 30, city: "New York" };
+      console.dir(obj);
+    }
+
+    // Console dirxml Demo
+    function consoleDirXmlDemo() {
+      const xmlString = "<note><to>Tove</to><from>Jane</from><message>Reminder</message></note>";
+      console.dirxml(xmlString);
+    }
+
+    // Console Group Start Demo
+    function consoleGroupStartDemo() {
+      console.group("Group");
+      console.log("Message 1");
+      console.log("Message 2");
+    }
+
+    // Console Group End Demo
+    function consoleGroupEndDemo() {
+      console.log("Message 3");
+      console.groupEnd();
+      console.log("Message 4");
+    }
+
+    // Console Table Demo
+    function consoleTableDemo() {
+      const data = [
+        { name: "John", age: 30, city: "New York" },
+        { name: "Alice", age: 25, city: "London" },
+        { name: "Bob", age: 35, city: "Paris" }
+      ];
+      console.table(data);
+    }
+
+    // Start Timer
+    function startTimer() {
+      console.time("Timer");
+    }
+
+    // End Timer
+    function endTimer() {
+      console.timeEnd("Timer");
+    }
+
+    // Console Trace Demo
+    function consoleTraceDemo() {
+      function innerFunction() {
+        console.trace("Trace");
+      }
+      function outerFunction() {
+        innerFunction
+      }
+    }
+
+     // Trigger a Global Error
+  function triggerGlobalError() {
+    // This line will intentionally throw an error
+    nonexistentFunction();
+  }
+
+  function handleError() {
+    try {
+      // Code that may potentially throw an error
+      const element = document.getElementById('nonexistent');
+      element.textContent = 'Hello, World!';
+    } catch (error) {
+      // Error handling code
+      console.error('An error occurred:', error.message);
+    } finally {
+      // Code that will always run, regardless of whether an error occurred or not
+      console.log('Finished handling error.');
+    }
+  }
+
+  class CustomError extends Error {
+    constructor(message) {
+      super(message);
+      this.name = 'CustomError';
+    }
+  }
+
+  function throwCustomError() {
+    throw new CustomError('This is a custom error message.');
+  }
+
+  window.onerror = function(message, source, lineno, colno, error) {
+    console.error('An error occurred:', message, source, lineno, colno, error);
+  };
+
+  function throwError() {
+    nonexistentFunction();
+  }
   </script>
 </body>
 
