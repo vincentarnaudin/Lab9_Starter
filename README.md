@@ -2,4 +2,4 @@
 
 Name: Vincent ARNAUDIN
 
-[GitHub Page]([https://vincentarnaudin.github.io/Lab7_Starter/](https://vincentarnaudin.github.io/Lab9_Starter/))
+[GitHub Page](https://vincentarnaudin.github.io/Lab9_Starter/)
