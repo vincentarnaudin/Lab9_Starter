@@ -94,6 +94,11 @@
   </main>
 
   <script>
+    window.TrackJS && TrackJS.install({ 
+    token: "84ad628a79a341b398a35cf9098e0b65"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+  
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -234,11 +239,6 @@
   function throwError() {
     nonexistentFunction();
   }
-
-  window.TrackJS && TrackJS.install({ 
-    token: "84ad628a79a341b398a35cf9098e0b65"
-    // for more configuration options, see https://docs.trackjs.com
-  });
   </script>
 </body>
 
